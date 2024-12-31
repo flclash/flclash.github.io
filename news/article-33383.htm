@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://flclash.github.io/news/article-33383.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue中使用el-table组件多页选择数据回显，分页记录保存选中的数据</title>
+        <meta name="description" content="问题：表格想跨页选择数据时，会发现当前页选中的数据并不会保存下来，选中状态也不会保存下来 解决办法： 1.在el-table上添加row-key属性， 2.在type为selection的el-tab" />
+        <link rel="icon" href="/assets/website/img/flclash/favicon.ico" type="image/x-icon"/>
+    <link href="/assets/website/css/flclash/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/css/flclash/ranade-fonts.css" rel="stylesheet">
+    <link href="/assets/website/css/flclash/remixicon.css" rel="stylesheet">
+    <link href="/assets/website/css/flclash/scrollCue.css" rel="stylesheet">
+    <link href="/assets/website/css/flclash/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-218XFWHS0J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-218XFWHS0J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--  Cursor Point -->
+    <span id="mouse-follower"></span>
+    <span id="dot"></span>
+    <!--  Cursor Point -->
+    <!-- Start Navbar Area -->
+    <nav class="navbar navbar-expand-xl" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand p-0" href="/">
+                                <span>Fl Clash</span>
+                            </a>
+            <a class="navbar-toggler" data-bs-toggle="offcanvas" href="#navbarOffcanvas" role="button" aria-controls="navbarOffcanvas">
+                <span class="burger-menu">
+                    <i class="ri-menu-line"></i>
+                </span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            首页                        </a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">
+                            免费节点                        </a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">
+                            推荐机场                        </a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">
+                            新闻资讯                        </a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            关于
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            联系
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar Area -->
+    <!-- Start Mobile Device Navbar Area -->
+    <div class="responsive-navbar offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas">
+        <div class="offcanvas-header">
+            <a href="/" class="logo d-inline-block">
+                Fl Clash
+            </a>
+            <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="accordion" id="navbarAccordion">
+                                <div class="accordion-item">
+                    <a class="accordion-link" href="/">
+                        首页                    </a>
+                </div>
+                                <div class="accordion-item">
+                    <a class="accordion-link" href="/free-nodes/">
+                        免费节点                    </a>
+                </div>
+                                <div class="accordion-item">
+                    <a class="accordion-link" href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </div>
+                                <div class="accordion-item">
+                    <a class="accordion-link" href="/news/">
+                        新闻资讯                    </a>
+                </div>
+                                <div class="accordion-item">
+                    <a class="accordion-link" href="#">
+                        关于
+                    </a>
+                </div>
+                <div class="accordion-item">
+                    <a class="accordion-link" href="#">
+                        联系
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Mobile Device Navbar Area -->
+
+    <!-- Inner Hero Area Start -->
+    <div class="inner-hero-area">
+        <div class="container-fluid">
+            <div class="row align-items-end">
+                <div class="col-lg-7">
+                    <div class="inner-hero-content">
+                        <h1>Vue中使用el-table组件多页选择数据回显，分页记录保存选中的数据</h1>
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    首页
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/news/">
+                                    新闻资讯                                </a>
+                            </li>
+                            <li>
+                                正文
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="inner-page-image">
+                        <img src="/assets/website/img/flclash/innar-page-shape2.png" class="inner-page-image2" alt="Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inner Hero Area End -->
+    <!-- About Area Start -->
+    <div class="about-area overflow-hidden ptb-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><img fetchpriority="high" decoding="async" alt="" height="459" src="http://img.555519.xyz/uploads3/20220707/7a032f29b9efb7da40a8df96549ce145.jpg"></p> <p>问题：表格想跨页选择数据时，会发现当前页选中的数据并不会保存下来，选中状态也不会保存下来</p> <p>解决办法：</p> <p>1.在el-table上添加row-key属性，<br /> 2.在type为selection的el-table-column上添加reserve-selection属性，值为true;注意只能在selection上使用<br /> 3.同时定义getRowKeys</p> <pre><code class="language-html">&lt;el-table  :row-key="getRowKeys"&gt;       &lt;el-table-column type="selection" :reserve-selection="true"&gt;       &lt;/el-table-column&gt; &lt;/el-table&gt;</code></pre> <pre><code class="language-javascript">	getRowKeys(row) {    		return row._id;//注意：如果记录唯一值为id，则用row.id.总之要返回记录的唯一标识 	}</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-33382.htm">从Java的堆栈到Equals和==的比較</a></p>
+                                        <p>下一个：<a href="/news/article-33890.htm">深圳宠物医院加盟连锁（宠物医院 深圳）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19435.htm" title="Java基础之浅谈继承、多态">Java基础之浅谈继承、多态</a></li>
+                        <li class="py-2"><a href="/news/article-26812.htm" title="猫咪三针疫苗打完要多久（猫咪三针疫苗打完多久测抗体）">猫咪三针疫苗打完要多久（猫咪三针疫苗打完多久测抗体）</a></li>
+                        <li class="py-2"><a href="/news/article-23552.htm" title="聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）">聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-node-share.htm" title="FlClash节点订阅每天更新20.2M/S免费节点订阅链接">FlClash节点订阅每天更新20.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29131.htm" title="梦见自己抱别的女人睡觉好不好（梦到自己抱别的女人）">梦见自己抱别的女人睡觉好不好（梦到自己抱别的女人）</a></li>
+                        <li class="py-2"><a href="/news/article-25880.htm" title="动物医院管理流程图表（动物医院管理制度）">动物医院管理流程图表（动物医院管理制度）</a></li>
+                        <li class="py-2"><a href="/news/article-20814.htm" title="动物医院仪器有哪些种类的（动物医院常见的诊疗设备）">动物医院仪器有哪些种类的（动物医院常见的诊疗设备）</a></li>
+                        <li class="py-2"><a href="/news/article-28208.htm" title="哈尔滨王允海宠物医院怎么样呀多少钱啊（王允海动物医院道里店怎么样）">哈尔滨王允海宠物医院怎么样呀多少钱啊（王允海动物医院道里店怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-subscribe-node.htm" title="FlClash节点订阅每天更新22.1M/S免费节点订阅链接">FlClash节点订阅每天更新22.1M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29130.htm" title="前后端分离跨域问题解决">前后端分离跨域问题解决</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Area End -->
+        <!-- Footer Area Start -->
+    <div class="footer-area">
+        <div class="container-fluid">
+            <div class="row align-items-center g-4 justify-content-center">
+                <div class="col-lg-6 col-xxl-2">
+                    <div class="footer-widget text-center middle-widget">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p>
+                            <a href="/">FlClash免费机场订阅节点官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Area End -->
+    <!-- Back to Top Start-->
+    <button type="button" id="backtotop" class="position-fixed back-to-top-btn text-center border-0 p-0">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!-- Back to Top End -->
+    <script src="/assets/website/js/frontend/flclash/jquery.min.js"></script>
+    <script src="/assets/website/js/frontend/flclash/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/flclash/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/flclash/smoothscroll.min.js"></script>
+    <script src="/assets/website/js/frontend/flclash/scrollCue.min.js"></script>
+    <script src="/assets/website/js/frontend/flclash/fslightbox.js"></script>
+    <script src="/assets/website/js/frontend/flclash/custom.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
